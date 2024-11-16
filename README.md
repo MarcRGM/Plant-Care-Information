@@ -1,3 +1,3 @@
-# Plant-Care-Information
+# Plant Care Information
 
-# Water-Down is a plant care information website that helps the user gain information about a certain plant
+Water-Down is a plant care information website that helps the user gain information about a certain plant
