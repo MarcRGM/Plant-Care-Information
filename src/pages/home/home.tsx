@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <header></header>
+        <div id="main">
+            <div id="logo-title"><span>Water-Down</span></div>
+            <input type="text" id="search">
+        </div>
+        <footer></footer>
+    </body>
+</html>
+
