@@ -1,0 +1,52 @@
+body {
+    padding: 0;
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(
+        0deg,
+        #425F57 0%,
+        #749F82 50%,
+        #A8E890 85%,
+        #CFFF8D 100%
+    );
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    width: 100vw;
+    height: 8%;
+}
+
+#main {
+    width: 100vw;
+    height: 84%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#logo-title {
+    
+}
+
+input:focus {
+    outline: none;
+}
+
+#search {
+    border: transparent;
+    border-radius: 10px;
+    box-shadow: 10px 10px #425F57;
+    font-size: 2.5rem;
+    padding: 10px;
+    width: 50%;
+}
+
+footer {
+    width: 100vw;
+    height: 8%;
+}
