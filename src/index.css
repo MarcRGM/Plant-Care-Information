@@ -1,16 +1,5 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background: linear-gradient(
-                    0deg,
-                    #425F57 0%,
-                    #749F82 50%,
-                    #A8E890 85%,
-                    #CFFF8D 100%
-                );
-
+  font-family: Poppins, Calibri, Trebuchet MS, Helvetica, Arial, sans-serif;
   font-synthesis: none; /* Disables both bold and italic synthesis. */
   text-rendering: optimizeLegibility; /* Prioritizes better readability and enables advanced font features. */
   /* adjusts font smoothing settings */
@@ -20,9 +9,17 @@
 
 body {
   margin: 0;
+  padding: 0;
   display: flex;
   place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(
+                    0deg,
+                    #425F57 0%,
+                    #749F82 50%,
+                    #A8E890 85%,
+                    #CFFF8D 100%
+                );
 }
 
