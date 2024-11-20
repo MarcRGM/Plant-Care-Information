@@ -1,7 +1,7 @@
 import './SearchBar.css';
 
 function SearchBar() {
-    return <input id="searchBar" type="text" />
+    return <input className="" id="searchBar" type="text" />
 }
 
 export default SearchBar;
