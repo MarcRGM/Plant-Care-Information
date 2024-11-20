@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS plant_care;
-USE plant_care;
+CREATE DATABASE IF NOT EXISTS plant_care_db;
+USE plant_care_db;
 
 -- Users Table
 CREATE TABLE IF NOT EXISTS users (
@@ -16,4 +16,4 @@ CREATE TABLE IF NOT EXISTS favorites (
   FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE -- relationship between the favorites table and the users table.
 );
 
--- C:/Users/marcr/Desktop/XAMPP/htdocs/Plant-Care-Information/database/init.sql
+-- path = C:/Users/marcr/Desktop/XAMPP/htdocs/Plant-Care-Information/database/init.sql
