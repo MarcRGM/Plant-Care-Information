@@ -18,8 +18,8 @@ const RegisterForm = () => {
         }
     };
 
-    return (
-        <form onSubmit={handleSubmit}>
+    return ( // call handleSubmit function when register button is clicked
+        <form onSubmit={handleSubmit}> 
             <input
                 type="text"
                 placeholder="Username"
