@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
-import styles from '../../styles/global.module.css';
+import styles from '../styles/global.module.css';
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
