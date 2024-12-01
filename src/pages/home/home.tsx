@@ -1,17 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <header></header>
-        <div id="main">
-            <div id="logo-title"><span>Water-Down</span></div>
-            <input type="text" id="search">
-        </div>
-        <footer></footer>
-    </body>
-</html>
+import SearchBar from "../../components/SearchBar/SearchBar";
 
+const Home = () => {
+  const handleSearch = (query: string) => {
+    // search functionality
+  };
+
+  return (
+    <div className="flex justify-center items-center w-full h-screen px-4 sm:px-6 md:px-8">
+      <div className="w-full max-w-xl sm:max-w-2xl md:max-w-3xl">
+        <SearchBar onSearch={handleSearch} />
+      </div>
+    </div>
+  );
+};
+
+export default Home;
