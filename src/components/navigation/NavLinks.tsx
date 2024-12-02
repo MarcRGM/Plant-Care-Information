@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export const NAV_ITEMS = ['Home', 'About', 'Services', 'Contact'] as const;
+export const NAV_ITEMS = ['Home', 'About', 'Contact'] as const;
 
 interface NavLinksProps {
   className?: string;
