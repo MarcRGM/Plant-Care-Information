@@ -17,9 +17,11 @@ const Header = () => {
         <Container>
           <div className="flex justify-between items-center h-12 xs:h-14 sm:h-16">
             <Link to="/" className="flex items-center">
-              <span className="text-[#425F57] font-semibold text-base xs:text-lg sm:text-xl lg:text-2xl">
-                Water-Down
-              </span>
+              <img 
+                src="../../public/images/WATER-DOWN.png" 
+                alt="Logo" 
+                className="w-32 sm:w-48 md:w-64 lg:w-64 h-auto" 
+              />
             </Link>
             <NavLinks className="hidden md:flex space-x-4 lg:space-x-8" />
             <div className="hidden md:flex items-center space-x-4">
