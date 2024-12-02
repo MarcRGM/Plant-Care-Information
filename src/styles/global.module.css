@@ -1,5 +1,5 @@
 .iconButton {
-  @apply text-[#425F57] hover:text-[#a8e890] transition-colors duration-200 p-1 sm:p-1.5;
+  @apply text-[#425F57] hover:text-[#E6FF94] transition-colors duration-200 p-1 sm:p-1.5;
 }
 
 .searchInput {
@@ -26,4 +26,3 @@
 .link {
   @apply text-[#9DDE8B]/80 hover:text-[#749F82] transition-colors duration-200;
 }
-
