@@ -16,7 +16,6 @@ const Register = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // PHP Integration
-
     if (formData.password !== formData.confirmPassword) {
       alert("Passwords do not match!");
       return;
