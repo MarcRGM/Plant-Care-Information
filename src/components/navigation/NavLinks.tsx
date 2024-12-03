@@ -14,7 +14,7 @@ const NavLinks = ({ className = '', onItemClick }: NavLinksProps) => {
         <Link
           key={item}
           to={item === 'Home' ? '/' : item.toLowerCase()}
-          className="text-sm lg:text-base text-[#425F57]/80 hover:text-[#425F57] transition-colors duration-200 mx-2"
+          className="text-md lg:text-base text-[#425F57]/80 hover:text-[#425F57] transition-colors duration-200 mx-2"
           onClick={onItemClick}
         >
           {item}

@@ -1,6 +1,6 @@
 import Home from "./pages/home";
-import LoginForm from "./components/LoginForm/LoginForm";
-import RegisterForm from "./components/RegisterForm/RegisterForm";
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 import Layout from "./components/layout/Layout"
 
 const routes = [

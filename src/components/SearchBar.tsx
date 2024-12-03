@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search } from 'lucide-react';
 import styles from '../styles/global.module.css';
+import classNames from 'classnames';
 
 interface SearchBarProps {
   onSearch: (query: string) => void;
@@ -23,7 +24,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
         value={query}
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Search for plants"
-        className={styles.searchInput}
+        className={classNames(styles.searchInput, "w-full px-3 sm:px-6 py-2.5 sm:py-4 text-sm sm:text-lg rounded-full bg-white/20 backdrop-blur-sm text-[#425F57] placeholder-[#425F57]/70")}
       />
       <div className="absolute right-2 xs:right-3 sm:right-4 top-1/2 -translate-y-1/2">
         <button

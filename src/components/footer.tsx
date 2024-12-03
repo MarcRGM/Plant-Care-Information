@@ -11,7 +11,7 @@ const Footer = () => {
             {'Privacy Policy'}
           </NavLink>
           <p className="text-xs xs:text-sm sm:text-base text-[#9DDE8B]/60">
-            © 2024 Your Company. All rights reserved.
+            © 2024 Water-Down. All rights reserved.
           </p>
         </div>
       </Container>
