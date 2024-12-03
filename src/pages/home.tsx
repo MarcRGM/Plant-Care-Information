@@ -3,6 +3,7 @@ import SearchBar from "../components/SearchBar";
 const Home = () => {
   const handleSearch = (query: string) => {
     // search functionality
+    if (!query.trim()) return; // Ignore empty or whitespace-only searches
   };
 
   return (

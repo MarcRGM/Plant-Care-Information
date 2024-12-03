@@ -11,9 +11,33 @@ const Login = () => {
     password: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Declare error state
+  const [error, setError] = useState<string>('');
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // PHP Integration
+    const data = new FormData();
+    data.append('email', formData.email);
+    data.append('password', formData.password);
+
+    try {
+      const response = await fetch('http://localhost/Plant-Care-Information/backend/login.php', {
+        method: 'POST',
+        body: data,
+      });
+
+      const result = await response.json();
+      
+      if (response.ok && result === 'Login successful!') {
+        alert('Login successful!');
+        // Redirect to home page
+      } else {
+        setError(result); // Set error message from server
+      }
+    } catch (error) {
+      setError('Error connecting to the server!');
+    }
   };
 
   return (

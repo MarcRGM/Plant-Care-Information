@@ -13,9 +13,35 @@ const Register = () => {
     confirmPassword: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     // PHP Integration
+
+    if (formData.password !== formData.confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    const data = new FormData();
+    data.append('full_name', formData.name);
+    data.append('email', formData.email);
+    data.append('password', formData.password);
+
+    try {
+      const response = await fetch('http://localhost/Plant-Care-Information/backend/register.php', {
+        method: 'POST',
+        body: data,
+      });
+
+      if (response.ok) {
+        alert('Registration successful!');
+      } else {
+        alert('Registration failed!');
+      }
+    } catch (error) {
+      alert('Error connecting to the server!');
+    }
+
   };
 
   return (
@@ -39,6 +65,7 @@ const Register = () => {
                 className={classNames(styles.searchInput, "w-full pl-10 pr-4 py-2 xs:py-2.5 rounded-md bg-white/20 text-[#425F57] placeholder-[#425F57]/70")}
                 placeholder="Enter your full name"
                 required
+                autoComplete="name"
               />
             </div>
           </div>
@@ -56,6 +83,7 @@ const Register = () => {
                 className={classNames(styles.searchInput, "w-full pl-10 pr-4 py-2 rounded-md bg-white/20 text-[#425F57] placeholder-[#425F57]/70")}
                 placeholder="Enter your email"
                 required
+                autoComplete="email"
               />
             </div>
           </div>
@@ -73,6 +101,7 @@ const Register = () => {
                 className={classNames(styles.searchInput, "w-full pl-10 pr-4 py-2 rounded-md bg-white/20 text-[#425F57] placeholder-[#425F57]/70")}
                 placeholder="Create a password"
                 required
+                autoComplete="current-password"
               />
             </div>
           </div>
@@ -90,6 +119,7 @@ const Register = () => {
                 className={classNames(styles.searchInput, "w-full pl-10 pr-4 py-2 xs:py-2.5 rounded-md bg-white/20 text-[#425F57] placeholder-[#425F57]/70")}
                 placeholder="Confirm your password"
                 required
+                autoComplete="new-password"
               />
             </div>
           </div>
