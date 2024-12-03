@@ -1,6 +1,6 @@
 # Plant Care Information
 
-Water-Down is a plant care information website that helps tusers gain information about a certain plant.
+Water-Down is a plant care information website that helps users gain information about a certain plant.
 
 React + TypeScript + Vite
 
