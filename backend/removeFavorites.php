@@ -4,7 +4,6 @@ require_once 'db.php';
 
 // Check if the user is logged in
 if (!isset($_SESSION['user_id'])) {
-    // echo "Need to be logged in to remove from favorites.";
     exit;
 }
 
@@ -13,11 +12,11 @@ if (isset($_POST['api_plant_id'])) {
     $user_id = $_SESSION['user_id'];  // Get logged-in user's ID 
     $api_plant_id = $_POST['api_plant_id'];  // Get the plant's ID to remove
 
-    // Delete the plant from the favorites table for this user
+    // Delete the plant from the favorites
     $stmt = $pdo->prepare("DELETE FROM favorites WHERE user_id = ? AND api_plant_id = ?");
     if ($stmt->execute([$user_id, $api_plant_id])) {
-        // echo "Plant removed from favorites!";
+        // success
     } else {
-        // echo "Failed to remove plant from favorites.";
+        // fail
     }
 }

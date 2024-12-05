@@ -2,6 +2,15 @@
 session_start();  // Start session to store user data temporarily.
 require_once 'db.php';  // Ensure the file is included only once and throws an error if it’s not found.
 
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type");
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {  // POST REQUEST
     $email = $_POST['email'];
     $password = $_POST['password'];

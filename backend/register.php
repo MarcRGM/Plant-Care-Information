@@ -11,9 +11,9 @@ error_reporting(E_ALL);
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") { // POST requests
-    $full_name = $_POST['full_name'];  // Retrieves the `full name` 
-    $email = $_POST['email'];  // Retrieves the `email` 
-    $password = $_POST['password'];  // Retrieves the `password` 
+    $full_name = $_POST['full_name'];
+    $email = $_POST['email'];
+    $password = $_POST['password'];
 
     // Check if email already exists
     $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");

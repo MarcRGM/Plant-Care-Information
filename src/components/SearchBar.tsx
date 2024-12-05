@@ -14,6 +14,7 @@ const SearchBar = ({ onSearch }: SearchBarProps) => {
     e.preventDefault();
     if (query.trim()) {
       onSearch(query.trim());
+      setQuery(''); // Clear input after submission
     }
   };
 

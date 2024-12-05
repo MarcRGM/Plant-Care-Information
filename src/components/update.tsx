@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { User, Mail, Lock } from 'lucide-react';
-import { Button } from '../components/ui';
+import { Button } from './ui';
 import styles from '../styles/global.module.css';
 import classNames from 'classnames';
 
@@ -27,12 +27,12 @@ const edit = () => {
     <div className="flex items-center justify-center min-h-screen p-4">
       <div className="w-full lg:max-w-md md:max-w-sm sm:max-w-xs max-w-xs bg-white/10 backdrop-blur-md rounded-lg shadow-xl p-6 xs:p-8">
         <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold text-center text-[#749F82] mb-4 sm:mb-4 md:mb-5 lg:mb-6">
-          Edit Account
+          Update Account
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4 xs:space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm  font-medium text-[#425F57] mb-1">
-              Old name:
+              Current name:
             </label>
             <div className="relative">
               <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[#425F57]" />
@@ -50,7 +50,7 @@ const edit = () => {
           </div>
           <div>
             <label htmlFor="password" className="block text-sm font-medium text-[#425F57] mb-1">
-              Old password
+              Current password
             </label>
             <div className="relative">
               <Lock className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-[#425F57]" />
