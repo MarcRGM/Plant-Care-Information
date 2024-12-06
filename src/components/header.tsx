@@ -36,10 +36,6 @@ const Header = () => {
     };
   }, []);
 
-  const handleLogin = () => {
-    localStorage.setItem('isLoggedIn', 'true');
-    setIsLoggedIn(true);
-  };
 
   const handleLogout = () => {
     localStorage.setItem('isLoggedIn', 'false');

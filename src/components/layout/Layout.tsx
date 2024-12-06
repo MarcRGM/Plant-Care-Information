@@ -12,8 +12,8 @@ const Layout = () => {
     // Check login status from localStorage
     const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     
-    // If not logged in and the route is not login or register page, redirect to login page
-    if (!isLoggedIn && location.pathname !== '/login' && location.pathname !== '/register') {
+    // If not logged in and trying to access /results, redirect to login page
+    if (!isLoggedIn && location.pathname === '/results') {
       navigate('/login'); // Redirect to login page if not logged in
     }
   }, [navigate, location]);

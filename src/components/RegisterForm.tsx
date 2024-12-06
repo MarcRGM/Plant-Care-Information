@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock, User } from 'lucide-react';
 import styles from '../styles/global.module.css';
 import classNames from 'classnames';
@@ -24,31 +24,38 @@ const Register = () => {
 
   // Handle form submission for registration
   const handleSubmit = async (e: React.FormEvent) => {  // Type the event as React.FormEvent
-    e.preventDefault();
-    
-    // Prepare the form data for submission
-    const data = new FormData();
-    data.append('name', formData.name);
-    data.append('email', formData.email);
-    data.append('password', formData.password);
+      e.preventDefault();
 
-    try {
-      const response = await fetch('http://localhost/Plant-Care-Information/backend/register.php', {
-        method: 'POST',
-        body: data,
-      });
+      const data = new FormData();
+      data.append('name', formData.name);
+      data.append('email', formData.email);
+      data.append('password', formData.password);
 
-      const result = await response.json();
-      
-      if (response.ok && result.message === 'Registration successful!') {
-        localStorage.setItem('isLoggedIn', 'true');
-        navigate('/'); // Redirect to home after successful registration
-      } else {
-        alert(result.message); // Show error message if registration fails
+      try {
+        const response = await fetch('http://localhost/Plant-Care-Information/backend/register.php', {
+          method: 'POST',
+          body: data,
+        });
+
+        // Check if the response is JSON
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const result = await response.json();
+          if (response.ok) {
+            alert(result.message); // Show success message
+            navigate('/'); // Redirect on success
+          } else {
+            alert(result.message); // Show error message
+          }
+        } else {
+          const text = await response.text(); // If not JSON, get the raw response text
+          console.error('Unexpected response format:', text);
+          alert('Unexpected server response');
+        }
+      } catch (error) {
+        console.error('Error connecting to the server:', error);
+        alert('Failed to connect to the server. Please try again later.');
       }
-    } catch (error) {
-      alert('Error connecting to the server!');
-    }
   };
 
   return (
@@ -111,6 +118,12 @@ const Register = () => {
           </div>
           <Button type="submit" className="w-full">Register</Button>
         </form>
+        <p className="mt-4 xs:mt-6 text-center text-sm xs:text-base text-white">
+          Already have an account?{' '}
+          <Link to="/login" className="text-[#CFFF8D] hover:text-[#A8E890]">
+            Sign in here
+          </Link>
+        </p>
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { Mail, Lock } from 'lucide-react';
 import styles from '../styles/global.module.css';
 import classNames from 'classnames';
@@ -35,6 +35,8 @@ const Login = () => {
       });
 
       const result = await response.json();
+
+      console.log(formData.email)
       
       if (response.ok && result.message === 'Login successful!') {
         localStorage.setItem('isLoggedIn', 'true');
@@ -51,7 +53,7 @@ const Login = () => {
     <div className="flex items-center justify-center min-h-screen p-4">
       <div className="w-full lg:max-w-md md:max-w-sm sm:max-w-xs max-w-xs bg-white/10 backdrop-blur-md rounded-lg shadow-xl p-6 xs:p-8">
         <h2 className="text-xl sm:text-xl md:text-2xl lg:text-3xl font-bold text-center text-[#749F82] mb-4 sm:mb-4 md:mb-5 lg:mb-6">
-          Welcome Back
+          Welcome Back!
         </h2>
         <form onSubmit={handleSubmit} className="space-y-4 xs:space-y-6">
           <div>
@@ -90,6 +92,12 @@ const Login = () => {
           </div>
           <Button type="submit" className="w-full">Sign In</Button>
         </form>
+        <p className="mt-4 xs:mt-6 text-center text-sm xs:text-base text-white">
+          Don't have an account?{' '}
+          <Link to="/register" className="text-[#CFFF8D] hover:text-[#A8E890]">
+            Register here
+          </Link>
+        </p>
       </div>
     </div>
   );
