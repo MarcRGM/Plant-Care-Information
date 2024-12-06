@@ -4,7 +4,6 @@ import RegisterForm from "./components/RegisterForm";
 import SearchResults from "./components/searchResults";
 import About from "./components/about";
 import Contact from "./components/contact";
-import Update from "./components/update";
 import Layout from "./components/layout/Layout";
 
 const routes = [
@@ -17,8 +16,7 @@ const routes = [
         { path: "register", component: RegisterForm },
         { path: "results", component: SearchResults},
         { path: "about", component: About},
-        { path: "contact", component: Contact},
-        { path: "update", component: Update}
+        { path: "contact", component: Contact}
       ],
     },
   ];

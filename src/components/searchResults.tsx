@@ -7,9 +7,6 @@ interface Entity {
   matched_in_type: string;
   access_token: string;
   entity_name: string;
-  description: {
-    value: string;
-  }
 }
 
 const SearchResults = () => {
@@ -26,19 +23,10 @@ const SearchResults = () => {
 
   // Transform the plant data into the structure expected by PlantCard
   const transformedPlants: Plant[] = plantsArray.map((item: Entity) => {
-    console.log(item);  // Log to check the structure of the item object
-  
     return {
       name: item.entity_name,
       common_names: [item.matched_in],
-      description: {
-        value: item.description?.value || "Description",
-      },
-      watering: {
-        max: 2, // Default watering values
-        min: 1,
-      },
-      entity_id: item.access_token,
+      token: item.access_token,
     };
   });
 

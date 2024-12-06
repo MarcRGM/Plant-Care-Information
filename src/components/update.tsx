@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { User, Mail, Lock } from 'lucide-react';
+import { User, Lock } from 'lucide-react';
 import { Button } from './ui';
 import styles from '../styles/global.module.css';
 import classNames from 'classnames';

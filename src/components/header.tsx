@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import MobileMenu from './navigation/MobileMenu';
 import NavLinks from './navigation/NavLinks';
@@ -10,6 +10,55 @@ import styles from '../styles/global.module.css';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
+
+  // Function to check if user is logged in
+  const checkLoginStatus = () => {
+    const loginStatus = localStorage.getItem('isLoggedIn');
+    setIsLoggedIn(loginStatus === 'true');
+  };
+
+  // Check login status on component mount and whenever localStorage changes
+  useEffect(() => {
+    checkLoginStatus();
+
+    // Listen for localStorage changes (e.g., from other tabs)
+    const handleStorageChange = () => {
+      checkLoginStatus();
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+    };
+  }, []);
+
+  const handleLogin = () => {
+    localStorage.setItem('isLoggedIn', 'true');
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    localStorage.setItem('isLoggedIn', 'false');
+    setIsLoggedIn(false);
+    navigate('/login');
+  };
+
+  const loginButtons = !isLoggedIn ? (
+    <>
+      <Link to="/login">
+        <Button variant="ghost" size="sm">Login</Button>
+      </Link>
+      <Link to="/register">
+        <Button size="sm">Register</Button>
+      </Link>
+    </>
+  ) : (
+    <Button onClick={handleLogout} size="sm">Logout</Button>
+  );
 
   return (
     <>
@@ -25,12 +74,7 @@ const Header = () => {
             </Link>
             <NavLinks className="hidden md:flex space-x-4 lg:space-x-8" />
             <div className="hidden md:flex items-center space-x-4">
-              <Link to="/login">
-                <Button variant="ghost" size="sm">Login</Button>
-              </Link>
-              <Link to="/register">
-                <Button size="sm">Register</Button>
-              </Link>
+              {loginButtons}
             </div>
             <IconButton
               onClick={() => setIsMobileMenuOpen(true)}

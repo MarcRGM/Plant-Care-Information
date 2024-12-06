@@ -10,8 +10,8 @@ ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
 
-
 if ($_SERVER["REQUEST_METHOD"] == "POST") {  // POST REQUEST
+    // Get email and password from POST data
     $email = $_POST['email'];
     $password = $_POST['password'];
 
@@ -25,8 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {  // POST REQUEST
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['email'] = $user['email'];
 
+        // Return success message
         echo json_encode(['message' => 'Login successful!']);
     } else {
+        // Return error message if login fails
         echo json_encode(['message' => 'Invalid email or password!']);
     }
 }

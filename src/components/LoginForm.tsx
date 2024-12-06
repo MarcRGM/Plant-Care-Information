@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Mail, Lock } from 'lucide-react';
 import styles from '../styles/global.module.css';
 import classNames from 'classnames';
@@ -11,10 +11,17 @@ const Login = () => {
     password: '',
   });
 
-  // Declare error state
-  const [error, setError] = useState<string>('');
+  const navigate = useNavigate(); // Use the useNavigate hook for redirection
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  // Check if user is already logged in
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+    if (isLoggedIn) {
+      navigate('/'); // Redirect to home if logged in
+    }
+  }, [navigate]);
+
+  const handleSubmit = async (e: React.FormEvent) => {  // Type the event as React.FormEvent
     e.preventDefault();
     // PHP Integration
     const data = new FormData();
@@ -29,14 +36,14 @@ const Login = () => {
 
       const result = await response.json();
       
-      if (response.ok && result === 'Login successful!') {
-        alert('Login successful!');
-        // Redirect to home page
+      if (response.ok && result.message === 'Login successful!') {
+        localStorage.setItem('isLoggedIn', 'true');
+        navigate('/'); // Redirect to home after successful login
       } else {
-        setError(result); // Set error message from server
+        alert(result.message); // Show error message if login fails
       }
     } catch (error) {
-      setError('Error connecting to the server!');
+      alert('Error connecting to the server!');
     }
   };
 
@@ -81,16 +88,8 @@ const Login = () => {
               />
             </div>
           </div>
-          <Button type="submit" className="w-full">
-            Sign In
-          </Button>
+          <Button type="submit" className="w-full">Sign In</Button>
         </form>
-        <p className="mt-4 xs:mt-6 text-center text-sm xs:text-base text-white">
-          Don't have an account?{' '}
-          <Link to="/register" className="text-[#CFFF8D] hover:text-[#A8E890]">
-            Register here
-          </Link>
-        </p>
       </div>
     </div>
   );

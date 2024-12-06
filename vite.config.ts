@@ -9,4 +9,5 @@ export default defineConfig({
       '/api': 'http://localhost/Plant-Care-Information/src/php/auth',  // Forward /api requests to PHP
     },
   },
+  
 })

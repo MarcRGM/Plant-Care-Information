@@ -1,10 +1,9 @@
 import SearchBar from "./components/SearchBar";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const navigate = useNavigate(); // Initialize useNavigate
-  const [error, setError] = useState<string | null>(null);
+
 
   const handleSearch = async (query: string) => {
     if (!query.trim()) return; // Ignore empty or whitespace-only searches
@@ -13,7 +12,7 @@ const Home = () => {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append(
       "Api-Key",
-      "cPYkGwpTQ1xcXpMgjgkgpFR0yHVQJlsyvWvtcKjNT3pAr0ghyE"
+      "bBAOzvPGOsKu50eglxrFnr9z2bb3QyJ2PYU958wjDiiK7cOMyl"
     );
 
     const requestOptions: RequestInit = {
@@ -26,8 +25,8 @@ const Home = () => {
       const response = await fetch(
         `https://plant.id/api/v3/kb/plants/name_search?q=${encodeURIComponent(
           query
-        )}&details=common_names,url,description,watering`,
-        requestOptions
+        )}`,
+        requestOptions  
       );
 
       if (!response.ok) {
@@ -36,14 +35,10 @@ const Home = () => {
 
       const result = await response.json();
 
-      console.log("API Response:", result); // Check the structure of result
-
        // Navigate to the /search-result page and pass the result as state
        navigate("/results", { state: { plants: result} });
-       setError(null);
      } catch (error: any) {
        console.error("Error:", error);
-       setError(error.message);
      }
 };
 
